@@ -214,37 +214,81 @@ const FinalScene: React.FC<FinalSceneProps> = ({ active }) => {
       <div
         className={`text-center px-8 z-10 transition-all duration-1000 ${phase >= 1 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}
       >
-        <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-light text-foreground leading-tight">
-          Eu te amo
+        <h1 className="font-display text-5xl sm:text-6xl md:text-7xl font-light text-foreground leading-tight tracking-tight">
+          <span className="bg-gradient-to-r from-foreground to-foreground/80 bg-clip-text">
+            Eu te amo
+          </span>
         </h1>
+        <div className="absolute -inset-4 bg-gradient-to-r from-romantic/0 via-romantic/10 to-romantic/0 blur-3xl -z-10" />
       </div>
 
       {/* Subtitle */}
       <div
-        className={`mt-6 text-center px-8 z-10 transition-all duration-1000 ${phase >= 2 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
+        className={`mt-6 text-center px-8 z-10 transition-all duration-1000 delay-300 ${phase >= 2 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}
       >
-        <p className="font-body text-lg sm:text-xl text-muted-foreground italic">
-          e isso nunca vai mudar
+        <p className="font-body text-lg sm:text-xl text-muted-foreground/90 italic relative inline-block">
+          <span className="relative">
+            e isso nunca vai mudar
+            <svg
+              className="absolute -bottom-2 left-0 w-full"
+              height="4"
+              viewBox="0 0 100 4"
+            >
+              <path
+                d="M0 2 Q25 0, 50 2 Q75 4, 100 2"
+                stroke="hsl(var(--romantic)/0.3)"
+                fill="none"
+                strokeWidth="1"
+              />
+            </svg>
+          </span>
         </p>
-        <p className="font-body text-md sm:text-xl text-muted-foreground italic w-4xl">
-          "E nesses traços vou tentando descrever Que mil palavras é tão pouco
-          pra dizer Que um sentimento muda tudo, muda o mundo Isso é o amor"
-        </p>
+
+        {/* Verso em destaque */}
+        <div className="relative max-w-xl mx-auto mt-10 px-4 py-6">
+          {/* Aspas decorativas */}
+          <div className="absolute -top-2 left-0 text-5xl font-serif text-romantic/20">
+            "
+          </div>
+          <div className="absolute -bottom-2 right-0 text-5xl font-serif text-romantic/20 rotate-180">
+            "
+          </div>
+
+          <p className="font-serif text-base sm:text-lg text-muted-foreground/80 leading-relaxed tracking-wide">
+            <span className="block mb-2">
+              "E nesses traços vou tentando descrever
+            </span>
+            <span className="block mb-2">
+              Que mil palavras é tão pouco pra dizer
+            </span>
+            <span className="block mb-2">
+              Que um sentimento muda tudo, muda o mundo
+            </span>
+            <span className="block">Isso é o amor"</span>
+          </p>
+
+          {/* Pequeno coração decorativo */}
+          <div className="flex justify-center gap-1 mt-4">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="w-1 h-1 rounded-full bg-romantic/30" />
+            ))}
+          </div>
+        </div>
       </div>
 
       {/* Decorative gold line */}
       <div
-        className={`mt-8 w-20 h-px z-10 transition-all duration-1000 delay-300 ${phase >= 2 ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"}`}
+        className={`mt-8 w-20 h-px z-10 transition-all duration-1000 delay-500 ${phase >= 2 ? "opacity-100 scale-x-100" : "opacity-0 scale-x-0"}`}
         style={{ backgroundColor: "hsl(var(--gold))" }}
       />
 
       {/* Heart */}
       <div
-        className={`mt-8 z-10 transition-all duration-1000 ${phase >= 3 ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
+        className={`mt-8 z-10 transition-all duration-1000 delay-700 ${phase >= 3 ? "opacity-100 scale-100" : "opacity-0 scale-50"}`}
       >
         <svg
           viewBox="0 0 24 24"
-          className="w-10 h-10"
+          className="w-10 h-10 animate-float"
           fill="hsl(var(--romantic))"
         >
           <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
@@ -253,18 +297,18 @@ const FinalScene: React.FC<FinalSceneProps> = ({ active }) => {
 
       {/* Audio Player - minimal elegant */}
       <div
-        className={`mt-10 z-10 transition-all duration-1000 delay-700 ${phase >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
+        className={`mt-10 z-10 transition-all duration-1000 delay-1000 ${phase >= 3 ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}
       >
-        <div className="flex items-center gap-4 px-6 py-3 rounded-full border border-border/50 bg-card/50 backdrop-blur-sm">
+        <div className="flex items-center gap-4 px-6 py-3 rounded-full border border-border/50 bg-card/50 backdrop-blur-sm hover:border-romantic/20 transition-all duration-500">
           {/* Play/Pause button */}
           <button
             onClick={togglePlay}
-            className="w-10 h-10 rounded-full flex items-center justify-center border border-muted-foreground/30 hover:border-romantic/50 transition-colors"
+            className="w-10 h-10 rounded-full flex items-center justify-center border border-muted-foreground/30 hover:border-romantic/50 hover:bg-romantic/5 transition-all duration-300 group"
           >
             {isPlaying ? (
               <svg
                 viewBox="0 0 24 24"
-                className="w-4 h-4"
+                className="w-4 h-4 group-hover:scale-110 transition-transform"
                 fill="hsl(var(--foreground))"
               >
                 <rect x="6" y="4" width="4" height="16" rx="1" />
@@ -273,7 +317,7 @@ const FinalScene: React.FC<FinalSceneProps> = ({ active }) => {
             ) : (
               <svg
                 viewBox="0 0 24 24"
-                className="w-4 h-4 ml-0.5"
+                className="w-4 h-4 ml-0.5 group-hover:scale-110 transition-transform"
                 fill="hsl(var(--foreground))"
               >
                 <polygon points="5,3 19,12 5,21" />
@@ -282,19 +326,21 @@ const FinalScene: React.FC<FinalSceneProps> = ({ active }) => {
           </button>
 
           {/* Progress bar */}
-          <div className="w-32 sm:w-44 h-1 bg-muted rounded-full overflow-hidden">
+          <div className="w-32 sm:w-44 h-1 bg-muted/30 rounded-full overflow-hidden">
             <div
-              className="h-full rounded-full transition-all duration-200"
+              className="h-full rounded-full transition-all duration-200 relative"
               style={{
                 width: `${progress}%`,
                 backgroundColor: "hsl(var(--romantic))",
               }}
-            />
+            >
+              <div className="absolute right-0 top-1/2 -translate-y-1/2 w-2 h-2 bg-romantic rounded-full shadow-lg shadow-romantic/50" />
+            </div>
           </div>
 
           {/* Duration */}
           {duration > 0 && (
-            <span className="text-xs text-muted-foreground font-body tabular-nums">
+            <span className="text-xs text-muted-foreground/70 font-mono tabular-nums">
               {Math.floor((duration * progress) / 100 / 60)}:
               {String(Math.floor(((duration * progress) / 100) % 60)).padStart(
                 2,
@@ -307,10 +353,13 @@ const FinalScene: React.FC<FinalSceneProps> = ({ active }) => {
 
       {/* Signature */}
       <div
-        className={`mt-12 z-10 transition-all duration-1000 delay-500 ${phase >= 3 ? "opacity-100" : "opacity-0"}`}
+        className={`mt-12 z-10 transition-all duration-1000 delay-1200 ${phase >= 3 ? "opacity-100" : "opacity-0"}`}
       >
-        <p className="font-display text-sm tracking-[0.4em] uppercase text-muted-foreground">
-          para sempre
+        <p className="font-bold text-white text-sm tracking-[0.4em] uppercase  relative">
+          <span className="relative inline-block">
+            para sempre
+            <span className="absolute -bottom-1 left-0 w-full h-px bg-gradient-to-r from-transparent via-romantic/50 to-transparent" />
+          </span>
         </p>
       </div>
 
